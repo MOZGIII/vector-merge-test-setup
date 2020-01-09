@@ -1,0 +1,17 @@
+[sources.in]
+  type = "docker"
+  include_containers = ["vector-merge-test-setup_log"]
+
+[transforms.parse_json]
+  type = "json_parser"
+  inputs = ["in"]
+  field = "message"
+  drop_invalid = false
+  drop_field = true
+  # If you see events that have no `message` but aren't filled with a bunch
+  # of `aaa`, `aab` and etc - logs aren't proprely merged.
+
+[sinks.out]
+  inputs = ["parse_json"]
+  type = "console"
+  encoding = "json"
