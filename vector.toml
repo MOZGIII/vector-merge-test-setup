@@ -5,8 +5,6 @@
 [transforms.merge]
   type = "merge"
   inputs = ["in"]
-  partial_event_indicator_field = "_partial"
-  merge_fields = ["message"]
 
 [transforms.parse_json]
   type = "json_parser"
