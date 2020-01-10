@@ -2,9 +2,15 @@
   type = "docker"
   include_containers = ["vector-merge-test-setup_log"]
 
+[transforms.merge]
+  type = "merge"
+  inputs = ["in"]
+  partial_event_indicator_field = "_partial"
+  merge_fields = ["message"]
+
 [transforms.parse_json]
   type = "json_parser"
-  inputs = ["in"]
+  inputs = ["merge"]
   field = "message"
   drop_invalid = false
   drop_field = true
