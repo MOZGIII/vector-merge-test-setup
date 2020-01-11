@@ -4,16 +4,3 @@ services:
   log:
     build: image
     network_mode: 'host'
-
-  vector:
-    image: 'timberio/vector:latest-alpine'
-    network_mode: 'host'
-    volumes:
-      - type: bind
-        source: ./vector.toml
-        target: /etc/vector/vector.toml
-        read_only: true
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
-        read_only: false
