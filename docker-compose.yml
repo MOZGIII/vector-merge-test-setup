@@ -4,3 +4,9 @@ services:
   log:
     build: image
     network_mode: 'host'
+  log_once:
+    build: image
+    network_mode: 'host'
+    command:
+      - ./longlog
+      - --once

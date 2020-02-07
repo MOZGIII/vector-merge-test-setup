@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'json'
 
+once = ARGV.first == "--once"
+
 REQURED_LENGTH = 16*1024
 
 message = ('aaa'..'bzz').each_with_object({ message: 'Log text' }) do |key, hash|
@@ -16,6 +18,7 @@ begin
   loop do
     puts message
     sleep 1
+    exit 0 if once
   end
 rescue Interrupt
   # Exit successfully on Ctrl+C.
